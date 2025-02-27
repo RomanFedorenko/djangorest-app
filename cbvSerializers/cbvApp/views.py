@@ -8,27 +8,35 @@ from django.http import Http404
 from rest_framework import generics, mixins
 # Create your views here.
 
-class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+class StudentList(generics.ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
-    def get(self, request):
-        return self.list(request)
-    
-    def post(self, request):
-        return self.create(request)
-class StudentDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
+class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
-    def get(self, request):
-        return self.retrieve(request)
+# class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+#     def get(self, request):
+#         return self.list(request)
     
-    def put(self, request):
-        return self.update(request)
+#     def post(self, request):
+#         return self.create(request)
+# class StudentDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+#     def get(self, request):
+#         return self.retrieve(request)
     
-    def delete(self, request):
-        return self.destroy(request)
+#     def put(self, request):
+#         return self.update(request)
+    
+#     def delete(self, request):
+#         return self.destroy(request)
     
     
     
