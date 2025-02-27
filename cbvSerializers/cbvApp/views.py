@@ -6,15 +6,21 @@ from .serializers import StudentSerializer
 from rest_framework import status
 from django.http import Http404
 from rest_framework import generics, mixins
+from rest_framework import viewsets
 # Create your views here.
 
-class StudentList(generics.ListCreateAPIView):
+
+class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
-class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+# class StudentList(generics.ListCreateAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+# class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
 
 # class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
 #     queryset = Student.objects.all()
